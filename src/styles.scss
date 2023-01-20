@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+@import "styles/variables.scss";
+
 /*
   1. Use a more-intuitive box-sizing model.
 */
@@ -50,4 +52,20 @@ p, h1, h2, h3, h4, h5, h6 {
 */
 #root, #__next {
   isolation: isolate;
+}
+
+// -----------------------------------------------------------------------------------
+
+body {
+  background-color: $background-color;
+  font-family: $font;
+  padding: 2rem 1rem;
+  
+}
+
+@media (min-width: 1440px) {
+  body {
+    padding: 4rem 2rem;
+    gap: 1.25rem;
+  }
 }

@@ -1,0 +1,12 @@
+@import "styles/variables.scss";
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9375rem;
+}
+
+@media (min-width: 1440px) {
+  main {
+    gap: 1.25rem;
+  }
+}

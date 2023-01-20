@@ -1,3 +1,4 @@
+import { Input } from '@angular/core';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./comment-add.component.scss'],
 })
 export class CommentAddComponent {
-  
+  @Input() data: any;
 }
