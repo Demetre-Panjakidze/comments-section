@@ -9,6 +9,8 @@ import json from "../assets/data/data.json";
 export class AppComponent {
   json = json;
   constructor () {
-    console.log(json);
+    localStorage.setItem("info", JSON.stringify(this.json));
   }
+
+  
 }
