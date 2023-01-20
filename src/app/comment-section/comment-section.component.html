@@ -1,1 +1,22 @@
-<p>bla</p>
+<main>
+  <div class="comment">
+    <div class="user-info">
+      <div class="username-image">
+        <img src="{{ data.comments[0].user.image.png }}" alt="" />
+        <p>{{ data.comments[0].user.username }}</p>
+        <div class="you-tag">you</div>
+      </div>
+      <p class="date-created">{{ data.comments[0].createdAt }}</p>
+    </div>
+    <p class="content">{{ data.comments[0].content }}</p>
+    <div class="vote">
+      <button class="add"><img src="assets/images/icons/icon-plus.svg" alt="" /></button>
+      <p>{{ data.comments[0].score }}</p>
+      <button class="substract"><img src="assets/images/icons/icon-minus.svg" alt="" /></button>
+    </div>
+    <div class="reply">
+      <img src="assets/images/icons/icon-reply.svg" alt="">
+      <p>Reply</p>
+    </div>
+  </div>
+</main>
