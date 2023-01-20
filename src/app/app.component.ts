@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { default as data } from './src/data.json';
+import json from "../assets/data/data.json";
 
 @Component({
   selector: 'app-root',
@@ -7,8 +7,8 @@ import { default as data } from './src/data.json';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'comments-section';
-  constructor() {
-    console.log(data);
+  json = json;
+  constructor () {
+    console.log(json);
   }
 }
