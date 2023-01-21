@@ -1,4 +1,4 @@
-<div class="reply-container">
+<div class="reply-inner-container">
   <div class="reply">
     <div class="user-info">
       <div class="username-image">
@@ -13,7 +13,7 @@
       </div>
       <p class="date-created">{{ data.comments[comments_index].replies[replies_index].createdAt }}</p>
     </div>
-    <p class="content"><span>@{{ data.comments[comments_index].replies[replies_index].replyingTo }} </span>{{ data.comments[comments_index].replies[replies_index].content }}</p>
+    <p class="content"><span>@{{ data.comments[comments_index].replies[replies_index].replyingTo }}</span>{{ data.comments[comments_index].replies[replies_index].content }}</p>
     <div class="vote">
       <button class="add">
         <img src="assets/images/icons/icon-plus.svg" alt="" />

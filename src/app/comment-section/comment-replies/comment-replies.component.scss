@@ -1,11 +1,13 @@
 @import "styles/variables.scss";
 
-.reply-container {
+.reply-inner-container {
   margin: 20px 0 0;
 
   .reply {
+    position: relative;
+    left: 25px;
     width: 100%;
-    max-width: 735px;
+    max-width: calc(100% - 25px);
     border-radius: 10px;
     background-color: $white;
     padding: 1.5625rem;
@@ -61,6 +63,7 @@
       span {
         color: $moderate-blue;
         font-weight: 700;
+        margin: 0 8px 0 0;
       }
     }
 
@@ -101,11 +104,13 @@
 }
 
 @media (min-width: 765px) {
-  .reply-container {
+  .reply-inner-container {
     .reply {
+      left: 0;
       grid-template-columns: repeat(3, auto);
       grid-template-rows: repeat(2, auto);
       gap: 10px 25px;
+      max-width: 641px;
 
       .user-info {
         grid-area: 1/2/2/3;
