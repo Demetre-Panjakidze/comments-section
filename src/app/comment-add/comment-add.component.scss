@@ -1,5 +1,6 @@
 @import "styles/variables.scss";
 form {
+  margin: 0 auto;
   width: 100%;
   max-width: 735px;
   border-radius: 10px;
@@ -46,7 +47,6 @@ form {
   form {
     display: flex;
     justify-content: space-between;
-    align-items: stretch;
     gap: 25px;
     height: 150px;
 
