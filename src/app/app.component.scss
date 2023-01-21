@@ -3,6 +3,11 @@ main {
   display: flex;
   flex-direction: column;
   gap: 0.9375rem;
+
+  .comment-container {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 @media (min-width: 1440px) {
