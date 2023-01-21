@@ -1,0 +1,32 @@
+<div class="reply-container">
+  <div class="reply">
+    <div class="user-info">
+      <div class="username-image">
+        <img src="{{ data.comments[comments_index].replies[replies_index].user.image.png }}" alt="" />
+        <p>{{ data.comments[comments_index].replies[replies_index].user.username }}</p>
+        <div
+          class="you-tag"
+          *ngIf="data.comments[comments_index].replies[replies_index].user.username === main_user"
+        >
+          you
+        </div>
+      </div>
+      <p class="date-created">{{ data.comments[comments_index].replies[replies_index].createdAt }}</p>
+    </div>
+    <p class="content"><span>@{{ data.comments[comments_index].replies[replies_index].replyingTo }} </span>{{ data.comments[comments_index].replies[replies_index].content }}</p>
+    <div class="vote">
+      <button class="add">
+        <img src="assets/images/icons/icon-plus.svg" alt="" />
+      </button>
+      <p>{{ data.comments[comments_index].replies[replies_index].score }}</p>
+      <button class="substract">
+        <img src="assets/images/icons/icon-minus.svg" alt="" />
+      </button>
+    </div>
+    <div class="reply-btn" *ngIf="data.comments[comments_index].replies[replies_index].user.username !== main_user">
+      <img src="assets/images/icons/icon-reply.svg" alt="" />
+      <p>Reply</p>
+    </div>
+  </div>
+</div> 
+  

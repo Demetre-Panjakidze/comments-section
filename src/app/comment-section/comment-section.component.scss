@@ -91,6 +91,12 @@
   }
 }
 
+.reply-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 @media (min-width: 765px) {
   .comment {
     grid-template-columns: repeat(3, auto);
