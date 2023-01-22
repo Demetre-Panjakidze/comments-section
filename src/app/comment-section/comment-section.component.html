@@ -14,11 +14,11 @@
   </div>
   <p class="content">{{ data.comments[index].content }}</p>
   <div class="vote">
-    <button class="add">
+    <button class="add" (click)="upvote()">
       <img src="assets/images/icons/icon-plus.svg" alt="" />
     </button>
     <p>{{ data.comments[index].score }}</p>
-    <button class="substract">
+    <button class="substract" (click)="downvote()">
       <img src="assets/images/icons/icon-minus.svg" alt="" />
     </button>
   </div>
