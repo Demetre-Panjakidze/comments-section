@@ -69,5 +69,20 @@ export class CommentSectionComponent implements OnInit {
     this.bla = this.arrayOfText.shift();
     this.content = this.arrayOfText.join(', ');
     this.replyClicked = false;
+
+    if (this.replyContent) {
+      this.newReply = {
+        id: this.data.comments.length + 1,
+        content: this.content,
+        createdAt: '1 seconds ago',
+        score: 0,
+        replyingTo: this.bla.slice(1),
+        user: this.data.currentUser,
+        replies: [],
+      };
+      this.comment.replies.push(this.newReply);
+      console.log(this.comment);
+      console.log(this.newReply);
+    }
   }
 }

@@ -21,7 +21,7 @@ export class CommentAddComponent implements OnInit {
 
   addComment() {
     if (this.commentContent) {
-      const newComment = {
+      this.newComment = {
         id: this.data.comments.length + 1,
         content: this.commentContent,
         createdAt: '1 second ago',
@@ -30,7 +30,7 @@ export class CommentAddComponent implements OnInit {
         replies: [],
       };
 
-      this.data.comments.push(newComment);
+      this.data.comments.push(this.newComment);
       localStorage.setItem('data', JSON.stringify(this.data));
       this.newComment = {};
       this.commentContent = '';
