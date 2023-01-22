@@ -1,5 +1,5 @@
 <form action="">
-  <textarea placeholder="Add a comment"></textarea>
+  <textarea [(ngModel)]="commentContent" placeholder="Add a comment"></textarea>
   <img src="{{data.currentUser.image.png}}" alt="">
-  <button>send</button>
+  <button (click)="addComment()">send</button>
 </form>
