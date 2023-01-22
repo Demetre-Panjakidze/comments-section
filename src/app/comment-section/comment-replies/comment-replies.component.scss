@@ -90,7 +90,8 @@
 
       button:is(:hover, :active) {
         img {
-          filter: brightness(0) saturate(100%) invert(38%) sepia(13%) saturate(2730%) hue-rotate(200deg) brightness(90%) contrast(92%);
+          filter: brightness(0) saturate(100%) invert(38%) sepia(13%)
+            saturate(2730%) hue-rotate(200deg) brightness(90%) contrast(92%);
         }
       }
     }
@@ -112,11 +113,12 @@
       }
 
       .btn:is(:hover, :active) {
-        opacity: .5;
+        opacity: 0.5;
       }
 
-      .reply-btn, .edit-btn {
-          color: $moderate-blue;
+      .reply-btn,
+      .edit-btn {
+        color: $moderate-blue;
       }
 
       .delete-btn {
