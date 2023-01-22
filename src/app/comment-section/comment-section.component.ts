@@ -21,9 +21,6 @@ export class CommentSectionComponent implements OnInit {
     if (LSD) {
       this.data = JSON.parse(LSD);
     }
-    if (this.hasVoted) {
-      this.upvoteDisabled = true;
-    }
   }
 
   upvote() {
