@@ -15,20 +15,20 @@
     </div>
     <p class="content"><span>@{{ data.comments[comments_index].replies[replies_index].replyingTo }}</span>{{ data.comments[comments_index].replies[replies_index].content }}</p>
     <div class="vote">
-      <button class="add">
+      <button class="add" (click)="upvote()" [disabled]="data.comments[comments_index].replies[replies_index].user.username === main_user || upvoteDisabled">
         <img src="assets/images/icons/icon-plus.svg" alt="" />
       </button>
       <p>{{ data.comments[comments_index].replies[replies_index].score }}</p>
-      <button class="substract">
+      <button class="substract" (click)="downvote()" [disabled]="data.comments[comments_index].replies[replies_index].user.username === main_user || downvoteDisabled">
         <img src="assets/images/icons/icon-minus.svg" alt="" />
       </button>
     </div>
     <div class="btns" >
-      <div class="delete-btn btn" *ngIf="data.comments[comments_index].replies[replies_index].user.username == main_user">
+      <div class="delete-btn btn" *ngIf="data.comments[comments_index].replies[replies_index].user.username === main_user">
         <img src="assets/images/icons/icon-delete.svg" alt="">
         <p>Delete</p>
       </div>
-      <div class="edit-btn btn" *ngIf="data.comments[comments_index].replies[replies_index].user.username == main_user">
+      <div class="edit-btn btn" *ngIf="data.comments[comments_index].replies[replies_index].user.username === main_user">
         <img src="../../../assets/images/icons/icon-edit.svg" alt="">
         <p>Edit</p>
       </div>

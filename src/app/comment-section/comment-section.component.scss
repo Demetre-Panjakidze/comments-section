@@ -75,6 +75,12 @@
       background-color: inherit;
       cursor: pointer;
     }
+
+    button:is(:hover, :active) {
+      img {
+        filter: invert(36%) sepia(14%) saturate(2899%) hue-rotate(200deg) brightness(95%) contrast(87%);
+      }
+    }
   }
 
   .reply {

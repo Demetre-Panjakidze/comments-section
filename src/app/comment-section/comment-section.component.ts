@@ -22,7 +22,7 @@ export class CommentSectionComponent implements OnInit {
       this.data = JSON.parse(LSD);
     }
   }
-
+  
   upvote() {
     if (this.hasVoted) {
       this.upvoteDisabled = true;
