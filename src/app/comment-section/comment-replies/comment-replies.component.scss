@@ -90,7 +90,7 @@
 
       button:is(:hover, :active) {
         img {
-          filter: invert(36%) sepia(14%) saturate(2899%) hue-rotate(200deg) brightness(95%) contrast(87%);
+          filter: brightness(0) saturate(100%) invert(38%) sepia(13%) saturate(2730%) hue-rotate(200deg) brightness(90%) contrast(92%);
         }
       }
     }
@@ -109,6 +109,10 @@
         p {
           font-weight: 700;
         }
+      }
+
+      .btn:is(:hover, :active) {
+        opacity: .5;
       }
 
       .reply-btn, .edit-btn {
