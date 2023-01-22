@@ -22,7 +22,7 @@ export class CommentSectionComponent implements OnInit {
       this.data = JSON.parse(LSD);
     }
   }
-  
+
   upvote() {
     if (this.hasVoted) {
       this.upvoteDisabled = true;
@@ -45,5 +45,29 @@ export class CommentSectionComponent implements OnInit {
       this.data.comments[this.index].score--;
       localStorage.setItem('data', JSON.stringify(this.data));
     }
+  }
+
+  newReply: object = {};
+  replyClicked: boolean = false;
+  replyContent: string = '';
+  targetText: string = '';
+  arrayOfText: string[] = [];
+  content: string = '';
+  bla: any;
+
+  replyAdd() {
+    this.replyContent = `@${this.data.comments[this.index].user.username}, `;
+    if (!this.replyClicked) {
+      this.replyClicked = true;
+    } else {
+      this.replyClicked = false;
+    }
+  }
+
+  submit() {
+    this.arrayOfText = this.replyContent.split(', ');
+    this.bla = this.arrayOfText.shift();
+    this.content = this.arrayOfText.join(', ');
+    this.replyClicked = false;
   }
 }

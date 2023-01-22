@@ -22,11 +22,26 @@
       <img src="assets/images/icons/icon-minus.svg" alt="" />
     </button>
   </div>
-  <div class="reply">
-    <img src="assets/images/icons/icon-reply.svg" alt="" />
-    <p>Reply</p>
+  <div class="btns">
+    <div class="delete-btn btn" *ngIf="data.comments[index].username == main_user">
+      <img src="assets/images/icons/icon-delete.svg" alt="">
+      <p>Delete</p>
+    </div>
+    <div class="edit-btn btn" *ngIf="data.comments[index].username == main_user">
+      <img src="../../../assets/images/icons/icon-edit.svg" alt="">
+      <p>Edit</p>
+    </div>
+    <div class="reply-btn btn" *ngIf="data.comments[index].username !== main_user" (click)="replyAdd()" >
+      <img src="assets/images/icons/icon-reply.svg" alt="" />
+      <p>Reply</p>
+    </div>
   </div>
 </div>
+<form action="" *ngIf="replyClicked" (ngSubmit)="submit()">
+  <textarea placeholder="Add a comment" [(ngModel)]="replyContent" name="comment"></textarea>
+  <img src="{{data.currentUser.image.png}}" alt="">
+  <button>send</button>
+</form>
 <div class="reply-container">
   <app-comment-replies *ngFor="let reply of data.comments[index].replies; let i=index" [data]="data" [replies_index]="i" [comments_index]="index"/>
 </div>
