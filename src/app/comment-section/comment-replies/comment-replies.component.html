@@ -23,9 +23,19 @@
         <img src="assets/images/icons/icon-minus.svg" alt="" />
       </button>
     </div>
-    <div class="reply-btn" *ngIf="data.comments[comments_index].replies[replies_index].user.username !== main_user">
-      <img src="assets/images/icons/icon-reply.svg" alt="" />
-      <p>Reply</p>
+    <div class="btns" >
+      <div class="delete-btn btn" *ngIf="data.comments[comments_index].replies[replies_index].user.username == main_user">
+        <img src="assets/images/icons/icon-delete.svg" alt="">
+        <p>Delete</p>
+      </div>
+      <div class="edit-btn btn" *ngIf="data.comments[comments_index].replies[replies_index].user.username == main_user">
+        <img src="../../../assets/images/icons/icon-edit.svg" alt="">
+        <p>Edit</p>
+      </div>
+      <div class="reply-btn btn" *ngIf="data.comments[comments_index].replies[replies_index].user.username !== main_user">
+        <img src="assets/images/icons/icon-reply.svg" alt="" />
+        <p>Reply</p>
+      </div>
     </div>
   </div>
 </div> 
