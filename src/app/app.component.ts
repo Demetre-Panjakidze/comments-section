@@ -7,8 +7,22 @@ import json from '../assets/data/data.json';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  data = json;
+  data: any | undefined;
   constructor() {
-    console.log(this.data);
+    this.checkData();
+  }
+
+  checkData() {
+    let LSD = localStorage.getItem('data');
+    if (LSD) {
+      this.data = JSON.parse(LSD);
+    } else {
+      this.data = json;
+    }
+  }
+
+  onNewCommentHandler(newComment: any) {
+    this.data.comments.push(newComment);
+    localStorage.setItem('data', JSON.stringify(this.data));
   }
 }

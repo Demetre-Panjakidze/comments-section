@@ -3,5 +3,5 @@
   <div class="comment-container">
     <app-comment-section [data]="data" *ngFor="let comment of data.comments; let i = index" [comment]="comment" [index]="i" />
   </div>
-  <app-comment-add [data]="data" />
+  <app-comment-add [data]="data" (onNewComment)="onNewCommentHandler($event)" />
 </main>

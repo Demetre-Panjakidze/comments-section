@@ -1,11 +1,11 @@
-import { Input, OnInit, Component } from '@angular/core';
+import { Input, Component } from '@angular/core';
 
 @Component({
   selector: 'app-comment-section',
   templateUrl: './comment-section.component.html',
   styleUrls: ['./comment-section.component.scss'],
 })
-export class CommentSectionComponent implements OnInit {
+export class CommentSectionComponent {
   @Input() data: any;
   @Input() comment: any;
   @Input() index: number = -1;
@@ -14,14 +14,6 @@ export class CommentSectionComponent implements OnInit {
   downvoteDisabled: boolean = false;
   hasVoted: boolean = false;
   hasDownvoted: boolean = false;
-
-  // LSD is localStorage data
-  ngOnInit() {
-    let LSD = localStorage.getItem('data');
-    if(LSD) {
-      this.data = JSON.parse(LSD);
-    }
-    }
 
   upvote() {
     if (this.hasVoted) {

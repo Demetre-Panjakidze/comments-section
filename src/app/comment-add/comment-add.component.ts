@@ -1,39 +1,29 @@
-import { Input, Component, OnInit } from '@angular/core';
+import { Input, Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-comment-add',
   templateUrl: './comment-add.component.html',
   styleUrls: ['./comment-add.component.scss'],
 })
-export class CommentAddComponent implements OnInit {
+export class CommentAddComponent {
   @Input() data: any;
+  @Output() onNewComment = new EventEmitter<any>();
   newComment: object = {};
   commentContent: string = '';
   replyNum: number = 0;
 
-  // LSD is localStorage data
-  ngOnInit() {
-    let LSD = localStorage.getItem('data');
-    if (LSD) {
-      this.data = JSON.parse(LSD);
-    }
-  }
-
   addComment() {
-    if (this.commentContent) {
-      this.newComment = {
-        id: this.data.comments.length + 1,
-        content: this.commentContent,
-        createdAt: '1 second ago',
-        score: 0,
-        user: this.data.currentUser,
-        replies: [],
-      };
+    this.onNewComment.emit({
+      id: this.data.comments.length + 1,
+      content: this.commentContent,
+      createdAt: '1 second ago',
+      score: 0,
+      user: this.data.currentUser,
+      replies: [],
+      username: this.data.currentUser.username,
+    });
 
-      this.data.comments.push(this.newComment);
-      localStorage.setItem('data', JSON.stringify(this.data));
-      this.newComment = {};
-      this.commentContent = '';
-    }
+    this.newComment = {};
+    this.commentContent = '';
   }
 }
