@@ -9,6 +9,7 @@ export class CommentSectionComponent {
   @Output() onNewReply = new EventEmitter<any>();
   @Input() data: any;
   @Input() index: number = -1;
+  order66: boolean = true;
   main_user: string = 'juliusomo';
   upvoteDisabled: boolean = false;
   downvoteDisabled: boolean = false;
@@ -39,10 +40,8 @@ export class CommentSectionComponent {
     }
   }
 
-  newReply: object = {};
   replyClicked: boolean = false;
   replyContent: string = '';
-  targetText: string = '';
   arrayOfText: string[] = [];
   content: string = '';
   bla: any;
@@ -70,9 +69,26 @@ export class CommentSectionComponent {
         replyingTo: this.bla.slice(1),
         user: this.data.currentUser,
         replies: [],
-      })
+      });
 
       this.replyClicked = false;
     }
+  }
+
+  backgroundAppear:boolean = false;
+
+  deleteComment() {
+    this.backgroundAppear = !this.backgroundAppear;
+  }
+
+  noCancel() {
+    this.backgroundAppear = !this.backgroundAppear;
+  }
+
+  yesDelete() {
+    this.backgroundAppear = !this.backgroundAppear;
+    delete this.data.comments[this.index];
+    this.data.comments.splice(this.index, 1);
+    localStorage.setItem('data', JSON.stringify(this.data));
   }
 }

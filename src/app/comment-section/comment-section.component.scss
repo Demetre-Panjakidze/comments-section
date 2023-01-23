@@ -165,6 +165,72 @@ form {
   align-items: flex-end;
 }
 
+.background-div {
+  position: fixed; 
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.15);
+  z-index: 2;
+
+  .question-div {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 30px;
+    width: 400px;
+    min-height: 10px;
+    background-color: $white;
+    z-index: 3;
+    border-radius: 10px;
+
+    .deleteComment {
+      font-weight: 700;
+      font-size: 20px;
+      color: $dark-blue;
+    }
+
+    .dangerZone {
+      line-height: 1.5;
+      color: $grayish-blue;
+      margin: 20px 0 0;
+    }
+
+    .choiceZone {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      button {
+        margin: 20px 0 0;
+        padding: 15px 30px;
+        text-transform: uppercase;
+        line-height: 1;
+        border: none;
+        border-radius: 10px;
+        color: $white;
+        font-weight: 500;
+        height: 48px;
+        cursor: pointer;
+      }
+
+      button:is(:hover, :active) {
+        opacity: .7;
+      }
+
+      .noCancel {
+        background-color: $grayish-blue;
+      }
+
+      .yesDelete {
+        background-color: $soft-red;
+      }
+    }
+  }
+}
+
 @media (min-width: 765px) {
   .comment {
     width: 735px;
