@@ -8,9 +8,7 @@ import { Input, Component, Output, EventEmitter } from '@angular/core';
 export class CommentAddComponent {
   @Input() data: any;
   @Output() onNewComment = new EventEmitter<any>();
-  newComment: object = {};
   commentContent: string = '';
-  replyNum: number = 0;
 
   addComment() {
     this.onNewComment.emit({
@@ -22,7 +20,7 @@ export class CommentAddComponent {
       replies: [],
       username: this.data.currentUser.username,
     });
-    
+
     this.commentContent = '';
   }
 }
