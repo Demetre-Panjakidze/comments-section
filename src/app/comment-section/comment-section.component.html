@@ -39,7 +39,7 @@
 </div>
 
 <form action="" *ngIf="replyClicked" (ngSubmit)="submit()">
-  <textarea placeholder="Add a comment" [(ngModel)]="replyContent" name="comment"></textarea>
+  <textarea placeholder="Add a comment" [(ngModel)]="replyContent" name="comment"><span>bla</span></textarea>
   <img src="{{data.currentUser.image.png}}" alt="">
   <button>send</button>
 </form>

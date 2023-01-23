@@ -1,6 +1,6 @@
 <main>
   <div class="comment-container">
-    <app-comment-section [data]="data" (onNewReply)="onNewReplyHandler($event, i)" *ngFor="let comment of data.comments; let i = index" [comment]="comment" [index]="i" />
+    <app-comment-section [data]="data" (onNewReply)="onNewReplyHandler($event, i)" *ngFor="let comment of data.comments; let i = index" [index]="i" />
   </div>
   <app-comment-add [data]="data" (onNewComment)="onNewCommentHandler($event)" />
 </main>

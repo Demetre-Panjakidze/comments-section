@@ -11,6 +11,7 @@ export class CommentRepliesComponent implements OnInit {
   @Input() replies_index: number = -1;
   @Input() comments_index: number = -1;
   main_user: string = 'juliusomo';
+  
   upvoteDisabled: boolean = false;
   downvoteDisabled: boolean = false;
   hasVoted: boolean = false;
