@@ -74,8 +74,6 @@ export class CommentSectionComponent {
       this.replyClicked = false;
       this.comment.replies.push(this.newReply);
       localStorage.setItem('data', JSON.stringify(this.data));
-      console.log(this.comment);
-      console.log(this.newReply);
     }
   }
 }

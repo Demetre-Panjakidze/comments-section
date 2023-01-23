@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import json from '../../../assets/data/data.json';
 
 @Component({
   selector: 'app-comment-replies',
@@ -20,6 +21,8 @@ export class CommentRepliesComponent implements OnInit {
     let LSD = localStorage.getItem('data');
     if (LSD) {
       this.data = JSON.parse(LSD);
+    } else {
+      this.data = json;
     }
   }
 
@@ -45,6 +48,5 @@ export class CommentRepliesComponent implements OnInit {
       this.data.comments[this.comments_index].replies[this.replies_index].score--;
       localStorage.setItem('data', JSON.stringify(this.data));
     }
-    
   }
 }

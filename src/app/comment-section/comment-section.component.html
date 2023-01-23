@@ -37,11 +37,13 @@
     </div>
   </div>
 </div>
+
 <form action="" *ngIf="replyClicked" (ngSubmit)="submit()">
   <textarea placeholder="Add a comment" [(ngModel)]="replyContent" name="comment"></textarea>
   <img src="{{data.currentUser.image.png}}" alt="">
   <button>send</button>
 </form>
+
 <div class="reply-container">
   <app-comment-replies *ngFor="let reply of data.comments[index].replies; let i=index" [data]="data" [replies_index]="i" [comments_index]="index"/>
 </div>
