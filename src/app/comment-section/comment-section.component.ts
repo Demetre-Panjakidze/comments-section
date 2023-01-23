@@ -18,10 +18,10 @@ export class CommentSectionComponent implements OnInit {
   // LSD is localStorage data
   ngOnInit() {
     let LSD = localStorage.getItem('data');
-    if (LSD) {
+    if(LSD) {
       this.data = JSON.parse(LSD);
     }
-  }
+    }
 
   upvote() {
     if (this.hasVoted) {
@@ -68,7 +68,6 @@ export class CommentSectionComponent implements OnInit {
     this.arrayOfText = this.replyContent.split(', ');
     this.bla = this.arrayOfText.shift();
     this.content = this.arrayOfText.join(', ');
-    this.replyClicked = false;
 
     if (this.replyContent) {
       this.newReply = {
@@ -80,7 +79,9 @@ export class CommentSectionComponent implements OnInit {
         user: this.data.currentUser,
         replies: [],
       };
+      this.replyClicked = false;
       this.comment.replies.push(this.newReply);
+      localStorage.setItem('data', JSON.stringify(this.data));
       console.log(this.comment);
       console.log(this.newReply);
     }
