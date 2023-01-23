@@ -22,8 +22,7 @@ export class CommentAddComponent {
       replies: [],
       username: this.data.currentUser.username,
     });
-
-    this.newComment = {};
+    
     this.commentContent = '';
   }
 }

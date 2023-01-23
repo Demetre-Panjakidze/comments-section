@@ -1,4 +1,4 @@
-import { Input, Component } from '@angular/core';
+import { Input, Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-comment-section',
@@ -6,6 +6,7 @@ import { Input, Component } from '@angular/core';
   styleUrls: ['./comment-section.component.scss'],
 })
 export class CommentSectionComponent {
+  @Output() onNewReply = new EventEmitter<any>();
   @Input() data: any;
   @Input() comment: any;
   @Input() index: number = -1;
@@ -62,7 +63,7 @@ export class CommentSectionComponent {
     this.content = this.arrayOfText.join(', ');
 
     if (this.replyContent) {
-      this.newReply = {
+      this.onNewReply.emit({
         id: this.data.comments.length + 1,
         content: this.content,
         createdAt: '1 seconds ago',
@@ -70,10 +71,9 @@ export class CommentSectionComponent {
         replyingTo: this.bla.slice(1),
         user: this.data.currentUser,
         replies: [],
-      };
+      })
+
       this.replyClicked = false;
-      this.comment.replies.push(this.newReply);
-      localStorage.setItem('data', JSON.stringify(this.data));
     }
   }
 }

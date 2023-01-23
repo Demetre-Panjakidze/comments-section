@@ -21,6 +21,11 @@ export class AppComponent {
     }
   }
 
+  onNewReplyHandler(newReply: any, i:number) {
+    this.data.comments[i].replies.push(newReply);
+    localStorage.setItem('data', JSON.stringify(this.data));
+  }
+
   onNewCommentHandler(newComment: any) {
     this.data.comments.push(newComment);
     localStorage.setItem('data', JSON.stringify(this.data));
