@@ -11,7 +11,7 @@ export class CommentRepliesComponent implements OnInit {
   @Input() replies_index: number = -1;
   @Input() comments_index: number = -1;
   main_user: string = 'juliusomo';
-  
+
   upvoteDisabled: boolean = false;
   downvoteDisabled: boolean = false;
   hasVoted: boolean = false;
@@ -49,5 +49,20 @@ export class CommentRepliesComponent implements OnInit {
       this.data.comments[this.comments_index].replies[this.replies_index].score--;
       localStorage.setItem('data', JSON.stringify(this.data));
     }
+  }
+
+  backgroundAppear:boolean = false;
+  deleteComment() {
+    this.backgroundAppear = !this.backgroundAppear;
+  }
+
+  noCancel() {
+    this.backgroundAppear = !this.backgroundAppear;
+  }
+
+  yesDelete() {
+    this.backgroundAppear = !this.backgroundAppear;
+    this.data.comments[this.comments_index].replies.splice(this.replies_index, 1);
+    localStorage.setItem('data', JSON.stringify(this.data));
   }
 }

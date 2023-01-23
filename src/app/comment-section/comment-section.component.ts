@@ -87,7 +87,6 @@ export class CommentSectionComponent {
 
   yesDelete() {
     this.backgroundAppear = !this.backgroundAppear;
-    delete this.data.comments[this.index];
     this.data.comments.splice(this.index, 1);
     localStorage.setItem('data', JSON.stringify(this.data));
   }
