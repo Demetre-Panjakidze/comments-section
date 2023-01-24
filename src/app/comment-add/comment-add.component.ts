@@ -10,9 +10,15 @@ export class CommentAddComponent {
   @Output() onNewComment = new EventEmitter<any>();
   commentContent: string = '';
 
+  postAmount: number = 0;
   addComment() {
+    this.data.comments.forEach((comment: any) => {
+      comment.replies.forEach(() => {
+        this.postAmount++;
+      });
+    });
     this.onNewComment.emit({
-      id: this.data.comments.length + 1,
+      id: this.data.comments.length + this.postAmount + 1,
       content: this.commentContent,
       createdAt: '1 second ago',
       score: 0,
@@ -21,6 +27,7 @@ export class CommentAddComponent {
       username: this.data.currentUser.username,
     });
 
+    this.postAmount = 0;
     this.commentContent = '';
   }
 }

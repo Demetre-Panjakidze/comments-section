@@ -55,14 +55,20 @@ export class CommentSectionComponent {
     }
   }
 
+  postAmount: number = 0;
   submit() {
     this.arrayOfText = this.replyContent.split(', ');
     this.bla = this.arrayOfText.shift();
     this.content = this.arrayOfText.join(', ');
+    this.data.comments.forEach((comment: any) => {
+      comment.replies.forEach(() => {
+        this.postAmount++;
+      });
+    });
 
     if (this.replyContent) {
       this.onNewReply.emit({
-        id: this.data.comments.length + 1,
+        id: this.data.comments.length + this.postAmount + 1,
         content: this.content,
         createdAt: '1 seconds ago',
         score: 0,
@@ -70,12 +76,12 @@ export class CommentSectionComponent {
         user: this.data.currentUser,
         replies: [],
       });
-
+      this.postAmount = 0;
       this.replyClicked = false;
     }
   }
 
-  backgroundAppear:boolean = false;
+  backgroundAppear: boolean = false;
 
   deleteComment() {
     this.backgroundAppear = !this.backgroundAppear;
