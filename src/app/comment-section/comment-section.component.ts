@@ -8,7 +8,6 @@ import { Input, Component, Output, EventEmitter } from '@angular/core';
 export class CommentSectionComponent {
   @Output() onNewReply = new EventEmitter<any>();
   @Input() data: any;
-
   @Input() comment: any;
   @Input() currentuser: any;
   @Input() index: number = -1;

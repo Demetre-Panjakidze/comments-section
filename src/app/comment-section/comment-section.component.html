@@ -5,7 +5,7 @@
       <p>{{ comment.user.username }}</p>
       <div
         class="you-tag"
-        *ngIf="comment.user.username === main_user"
+        *ngIf="comment.user.username === currentuser.username"
       >
         you
       </div>
@@ -23,15 +23,15 @@
     </button>
   </div>
   <div class="btns">
-    <div class="delete-btn btn" *ngIf="comment.username == main_user" (click)="deleteComment()">
+    <div class="delete-btn btn" *ngIf="comment.username == currentuser.username" (click)="deleteComment()">
       <img src="assets/images/icons/icon-delete.svg" alt="">
       <p>Delete</p>
     </div>
-    <div class="edit-btn btn" *ngIf="comment.username == main_user">
+    <div class="edit-btn btn" *ngIf="comment.username == currentuser.username">
       <img src="assets/images/icons/icon-edit.svg" alt="">
       <p>Edit</p>
     </div>
-    <div class="reply-btn btn" *ngIf="comment.username !== main_user" (click)="replyAdd()" >
+    <div class="reply-btn btn" *ngIf="comment.username !== currentuser.username" (click)="replyAdd()" >
       <img src="assets/images/icons/icon-reply.svg" alt="" />
       <p>Reply</p>
     </div>
@@ -39,7 +39,7 @@
 </div>
 
 <form action="" *ngIf="replyClicked" (ngSubmit)="submit()">
-  <textarea placeholder="Add a comment" [(ngModel)]="replyContent" name="comment"><span>bla</span></textarea>
+  <textarea placeholder="Add a comment" [(ngModel)]="replyContent" name="comment"></textarea>
   <img src="{{currentuser.image.png}}" alt="">
   <button>send</button>
 </form>
