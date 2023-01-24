@@ -8,6 +8,9 @@ import { Input, Component, Output, EventEmitter } from '@angular/core';
 export class CommentSectionComponent {
   @Output() onNewReply = new EventEmitter<any>();
   @Input() data: any;
+
+  @Input() comment: any;
+  @Input() currentuser: any;
   @Input() index: number = -1;
   order66: boolean = true;
   main_user: string = 'juliusomo';
@@ -47,7 +50,7 @@ export class CommentSectionComponent {
   bla: any;
 
   replyAdd() {
-    this.replyContent = `@${this.data.comments[this.index].user.username}, `;
+    this.replyContent = `@${this.comment.user.username}, `;
     if (!this.replyClicked) {
       this.replyClicked = true;
     } else {
@@ -60,20 +63,20 @@ export class CommentSectionComponent {
     this.arrayOfText = this.replyContent.split(', ');
     this.bla = this.arrayOfText.shift();
     this.content = this.arrayOfText.join(', ');
-    this.data.comments.forEach((comment: any) => {
-      comment.replies.forEach(() => {
-        this.postAmount++;
-      });
-    });
+    // this.data.comments.forEach((comment: any) => {
+    //   comment.replies.forEach(() => {
+    //     this.postAmount++;
+    //   });
+    // });
 
     if (this.replyContent) {
       this.onNewReply.emit({
-        id: this.data.comments.length + this.postAmount + 1,
+        id: 0,
         content: this.content,
         createdAt: '1 seconds ago',
         score: 0,
         replyingTo: this.bla.slice(1),
-        user: this.data.currentUser,
+        user: this.currentuser,
         replies: [],
       });
       this.postAmount = 0;
@@ -94,6 +97,11 @@ export class CommentSectionComponent {
   yesDelete() {
     this.backgroundAppear = !this.backgroundAppear;
     this.data.comments.splice(this.index, 1);
+    localStorage.setItem('data', JSON.stringify(this.data));
+  }
+
+  handleReplyDelete(event: any, index: any) {
+    this.comment.replies.splice(index, 1);
     localStorage.setItem('data', JSON.stringify(this.data));
   }
 }

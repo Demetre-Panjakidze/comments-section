@@ -1,37 +1,37 @@
 <div class="comment">
   <div class="user-info">
     <div class="username-image">
-      <img src="{{ data.comments[index].user.image.png }}" alt="" />
-      <p>{{ data.comments[index].user.username }}</p>
+      <img src="{{ comment.user.image.png }}" alt="" />
+      <p>{{ comment.user.username }}</p>
       <div
         class="you-tag"
-        *ngIf="data.comments[index].user.username === main_user"
+        *ngIf="comment.user.username === main_user"
       >
         you
       </div>
     </div>
-    <p class="date-created">{{ data.comments[index].createdAt }}</p>
+    <p class="date-created">{{ comment.createdAt }}</p>
   </div>
-  <p class="content">{{ data.comments[index].content }}</p>
+  <p class="content">{{ comment.content }}</p>
   <div class="vote">
-    <button class="add" (click)="upvote()" [disabled]="upvoteDisabled || data.comments[index].username == main_user">
+    <button class="add" (click)="upvote()" [disabled]="upvoteDisabled || comment.username == main_user">
       <img src="assets/images/icons/icon-plus.svg" alt="" />
     </button>
-    <p>{{ data.comments[index].score }}</p>
-    <button class="substract" (click)="downvote()" [disabled]="downvoteDisabled || data.comments[index].username == main_user">
+    <p>{{ comment.score }}</p>
+    <button class="substract" (click)="downvote()" [disabled]="downvoteDisabled || comment.username == main_user">
       <img src="assets/images/icons/icon-minus.svg" alt="" />
     </button>
   </div>
   <div class="btns">
-    <div class="delete-btn btn" *ngIf="data.comments[index].username == main_user" (click)="deleteComment()">
+    <div class="delete-btn btn" *ngIf="comment.username == main_user" (click)="deleteComment()">
       <img src="assets/images/icons/icon-delete.svg" alt="">
       <p>Delete</p>
     </div>
-    <div class="edit-btn btn" *ngIf="data.comments[index].username == main_user">
+    <div class="edit-btn btn" *ngIf="comment.username == main_user">
       <img src="assets/images/icons/icon-edit.svg" alt="">
       <p>Edit</p>
     </div>
-    <div class="reply-btn btn" *ngIf="data.comments[index].username !== main_user" (click)="replyAdd()" >
+    <div class="reply-btn btn" *ngIf="comment.username !== main_user" (click)="replyAdd()" >
       <img src="assets/images/icons/icon-reply.svg" alt="" />
       <p>Reply</p>
     </div>
@@ -40,12 +40,12 @@
 
 <form action="" *ngIf="replyClicked" (ngSubmit)="submit()">
   <textarea placeholder="Add a comment" [(ngModel)]="replyContent" name="comment"><span>bla</span></textarea>
-  <img src="{{data.currentUser.image.png}}" alt="">
+  <img src="{{currentuser.image.png}}" alt="">
   <button>send</button>
 </form>
 
 <div class="reply-container">
-  <app-comment-replies *ngFor="let reply of data.comments[index].replies; let i=index" [data]="data" [replies_index]="i" [comments_index]="index"/>
+  <app-comment-replies [reply]="reply" [currentuser]="currentuser" *ngFor="let reply of comment.replies; let i=index" (deleteReply)="handleReplyDelete($event, i)"  />
 </div>
 
 <div class="background-div" *ngIf="backgroundAppear">
