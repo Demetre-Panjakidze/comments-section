@@ -17,24 +17,15 @@ export class CommentSectionComponent {
   downvoteDisabled: boolean = false;
   hasVoted: boolean = false;
   hasDownvoted: boolean = false;
-  onceUpvoted:boolean = false;
-  onceDownvoted:boolean = false;
 
   upvote() {
     if (this.hasVoted) {
       this.upvoteDisabled = true;
       this.downvoteDisabled = false;
-    } else if (!this.hasVoted && !this.onceUpvoted) {
+    } else {
       this.hasVoted = true;
       this.hasDownvoted = false;
-      this.onceUpvoted = true;
       this.data.comments[this.index].score++;
-      localStorage.setItem('data', JSON.stringify(this.data));
-    } else if (!this.hasVoted && this.onceUpvoted) {
-      this.hasVoted = true;
-      this.hasDownvoted = false;
-      this.onceUpvoted = true;
-      this.data.comments[this.index].score+=2;
       localStorage.setItem('data', JSON.stringify(this.data));
     }
   }
@@ -43,17 +34,10 @@ export class CommentSectionComponent {
     if (this.hasDownvoted) {
       this.downvoteDisabled = true;
       this.upvoteDisabled = false;
-    } else if (!this.hasDownvoted && !this.onceDownvoted) {
+    } else {
       this.hasDownvoted = true;
       this.hasVoted = false;
-      this.onceDownvoted = true;
       this.data.comments[this.index].score--;
-      localStorage.setItem('data', JSON.stringify(this.data));
-    } else if (!this.hasDownvoted && this.onceDownvoted) {
-      this.hasVoted = true;
-      this.hasDownvoted = false;
-      this.onceUpvoted = true;
-      this.data.comments[this.index].score-=2;
       localStorage.setItem('data', JSON.stringify(this.data));
     }
   }
